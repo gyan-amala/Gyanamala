@@ -172,20 +172,22 @@ h1, h2, h3, h4 {
     box-shadow: 0 0 20px rgba(0, 255, 213, 0.2);
     backdrop-filter: blur(10px);
 }
-/* Scroll Indicator */
+ /* Scroll Indicator */
 .scroll-indicator {
     position: absolute;
-    bottom: 30px;
+    /* CHANGED: Moved up from 30px to 90px to clear mobile browser bars */
+    bottom: 90px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 15px; /* Increased gap slightly */
     opacity: 0.7;
     cursor: pointer;
     transition: opacity 0.3s;
-    animation: fadeInDelayed 2s ease-in forwards; /* Optional: fades in slowly */
+    animation: fadeInDelayed 2s ease-in forwards;
+    z-index: 20; /* Ensures it sits on top of everything */
 }
 
 .scroll-indicator:hover {
@@ -200,13 +202,15 @@ h1, h2, h3, h4 {
 }
 
 .scroll-indicator .arrow {
+    display: block; /* Ensures it renders correctly */
     width: 20px;
     height: 20px;
-    border-right: 2px solid var(--accent-cyan);
-    border-bottom: 2px solid var(--accent-cyan);
+    border-right: 3px solid var(--accent-cyan); /* Made slightly thicker */
+    border-bottom: 3px solid var(--accent-cyan); /* Made slightly thicker */
     transform: rotate(45deg);
     animation: bounce 2s infinite;
 }
+
 
 /* Keyframes for the bounce animation */
 @keyframes bounce {
